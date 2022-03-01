@@ -1,4 +1,0 @@
-lw $t3, 0($t2)
-jal swap
-addi $s1, $s0, –1
-sll $t1,$t0,2
