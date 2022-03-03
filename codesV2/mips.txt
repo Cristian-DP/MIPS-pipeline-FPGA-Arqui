@@ -1,4 +1,4 @@
-add 	tr  000000 rd rs st 00000 000000
+add 	tr  000000 rd rs rt 00000 000000
 addu 	tr 	000000 rd rs rt 00000 100001
 and		tr	000000 rd rs rt 00000 100100
 nor 	tr	000000 rd rs rt 00000 100111
@@ -11,24 +11,24 @@ srav 	tr	000000 rd rt rs 00000 000111
 srl		tr	000000 00000 rd rt sa 000010
 srlv 	tr	000000 rd rs rt 00000 000110
 subu 	tr	000000 rd rt rs 00000 100011
-jr 		tr	000000 r 001000
-jalr 	tr	000000 r 001001
-lb 		100000 i
-lh 		100001 i
-lw 		100011 i
-lwu 	010011 i
-lbu 	100100 i
-lhu 	100101 i
-sb 		101000 i
-sh 		101001 i
-sw 		101011 i
-addi 	001000 i
-andi 	001100 i
-ori 	001101 i
-xori 	001110 i
-lui 	001111 i
-slti 	001010 i
-beq 	000100 i
-bne 	000101 i
-jal 	000011 j
-j 		110001 j
+addi 	tim	001000	rt	rs	inm	
+andi 	tim	001100	rt	rs	inm
+slti 	tim	001010 	rt	rs	inm
+xori 	tim	001110 	rt	rs	inm
+ori 	tim	001101 	rt	rs	inm
+lui 	tim	010000	00000	rt	inm
+beq 	tio	000100	rs	rt	off
+bne 	tio	000101	rs	rt	off
+lb 		tio	100000	rt	off	base
+lbu 	tio	100100	rt	off	base
+lh 		tio	100001	rt	off	base
+lhu 	tio	100101	rt	off	base
+lw 		tio	100011	rt	off	base
+lwu 	tio	010011	rt	off	base
+sb 		tio	101000	rt	off	base
+sh 		tio	101001	rt	off	base
+sw 		tio	101011	rt	off	base
+jal 	tji	000011	ind
+j 		tji	110001	ind
+jr 		tj 	rs 00000 00000 00000 001000
+jalr 	tj 	rs 00000 00000 00000 001001		
