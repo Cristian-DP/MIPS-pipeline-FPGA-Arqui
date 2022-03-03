@@ -28,10 +28,6 @@ class TypeR:
 		self.setISet (mips [2 : len(mips)])
 		self.setCodeAssembler (c_asm[1 : len(c_asm)])
 		self.setRegFile (reg_f)
-		self.convert()
-		print("convert " + str(self.code_assemb) + " -> " + str (self.getCodeMachine()))
-		
-		return self.getCodeMachine ()
 	
 	# realizamod la conversion de codigo assembler
 	# a código maquina
@@ -68,7 +64,11 @@ class TypeR:
 		self.setCodeMachine ("".join(self.rd))
 		self.setCodeMachine ("".join(self.sa))
 		self.setCodeMachine ("".join(self.function))
-
+		
+		print("convert " + str(self.code_assemb) + " -> " + str (self.getCodeMachine()))
+		
+		return self.getCodeMachine ()
+		
 	# Se limpian todas las matricex y arrays
 	def clearAll (self):
 		if len(self.code_assemb) != 0:
