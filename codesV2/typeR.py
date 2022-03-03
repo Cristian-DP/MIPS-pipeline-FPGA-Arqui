@@ -46,7 +46,7 @@ class TypeR:
 				j += 1
 			elif pto == "sa":
 				self.sa = [literalToBinary (int(str(self.code_assemb [j])), 5)]
-				
+				j += 1
 			else:
 				if count == 1:
 					self.opcode.append (pto)
