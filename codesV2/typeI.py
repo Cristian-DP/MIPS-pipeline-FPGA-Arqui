@@ -58,8 +58,6 @@ class TypeI:
 		self.setCodeMachine ("".join(self.rt))
 		self.setCodeMachine ("".join(self.inof))
 
-		print("convert " + str(self.code_assemb) + " -> " + str (self.getCodeMachine()))
-		
 		return self.getCodeMachine ()
 
 	# Se limpian todas las matricex y arrays

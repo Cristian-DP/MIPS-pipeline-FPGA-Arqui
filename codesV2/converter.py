@@ -58,6 +58,8 @@ for pto_asm in range(len(code_assembler)):
 					c_asm = type_j.convert ()
 
 				codeMachine_file.write ("".join(c_asm) + "\n")
+				
+				print("convert " + str(code_assembler[pto_asm]) + " -> " + str(c_asm) )
 				c_asm.clear()
 codeMachine_file.close ()
 

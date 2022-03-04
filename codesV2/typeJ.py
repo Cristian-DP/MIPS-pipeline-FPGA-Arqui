@@ -40,8 +40,6 @@ class TypeJ:
 		self.setCodeMachine ("".join(self.opcode))
 		self.setCodeMachine ("".join(self.index))
 		
-		print("convert " + str(self.code_assemb) + " -> " + str (self.getCodeMachine()))
-		
 		return self.getCodeMachine ()
 		
 	# Se limpian todas las matricex y arrays

@@ -68,8 +68,6 @@ class TypeR:
 		self.setCodeMachine ("".join(self.sa))
 		self.setCodeMachine ("".join(self.function))
 		
-		print("convert " + str(self.code_assemb) + " -> " + str (self.getCodeMachine()))
-		
 		return self.getCodeMachine ()
 		
 	# Se limpian todas las matricex y arrays
