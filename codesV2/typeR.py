@@ -28,7 +28,6 @@ class TypeR:
 		self.setISet (mips [2 : len(mips)])
 		self.setCodeAssembler (c_asm[1 : len(c_asm)])
 		self.setRegFile (reg_f)
-	
 	# realizamod la conversion de codigo assembler
 	# a código maquina
 	def convert (self):
@@ -52,6 +51,10 @@ class TypeR:
 					self.opcode.append (pto)
 				if count == 2:
 					self.rs.append (pto)
+				if count == 3:
+					self.rd.append (pto)
+				if count == 4:
+					self.rt.append (pto)
 				elif count == 5:
 					self.sa.append (pto)
 				elif count == 6:

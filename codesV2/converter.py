@@ -2,8 +2,19 @@ from typeR import TypeR
 from typeI import TypeI
 from functions import buildMatrix, deleteChar
 
+# determina si el jalr a utilizar corresponde al
+# jarl del código assembler
+def jalr (c_a, m):
+	cant_reg = len(c_a) - 1
+	if (cant_reg == 1 and "rd" not in m):
+	 	return 1
+	elif (cant_reg == 2 and "rd" in m):
+		return 1
+
+	return 0
+
 # path
-path = "examplesCode/suma.asm"
+path = "examplesCode/jalr.asm"
 # variables para el codigo assembler 
 codeMachine_file = open ("codeMachine.mem", "a")
 c_asm = []
@@ -26,15 +37,20 @@ mips			= buildMatrix ("mips.txt")
 for pto_asm in range(len(code_assembler)):
 	for pto_mips in range (len(mips)): 
 		if code_assembler[pto_asm][0] ==  mips [pto_mips][0]:
-			# opcion tr
-			if mips [pto_mips][1] == "tr":
-				type_r.setTypeR(mips[pto_mips], register_file, code_assembler[pto_asm])
-				c_asm = type_r.convert ()
-			# opcion tim
-			elif mips [pto_mips][1] == "tim" or mips [pto_mips][1] == "tio":
-				type_i.setTypeI(mips[pto_mips], register_file, code_assembler[pto_asm])
-				c_asm = type_i.convert ()
+			# determino jalr
+			ret = jalr (code_assembler[pto_asm], mips [pto_mips]) 
+			if ret != 0:
+				# opcion tr
+				if mips [pto_mips][1] == "tr":
+					type_r.setTypeR(mips[pto_mips], register_file, code_assembler[pto_asm])
+					c_asm = type_r.convert ()
+				# opcion tim
+				elif mips [pto_mips][1] == "tim" or mips [pto_mips][1] == "tio":
+					type_i.setTypeI(mips[pto_mips], register_file, code_assembler[pto_asm])
+					c_asm = type_i.convert ()
 
-			codeMachine_file.write ("".join(c_asm) + "\n")
-			c_asm.clear()
+				codeMachine_file.write ("".join(c_asm) + "\n")
+				c_asm.clear()
 codeMachine_file.close ()
+
+
