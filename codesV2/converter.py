@@ -18,7 +18,7 @@ def jalr (c_a, m):
 	return 0
 
 # path
-path = "examplesCode/j.asm"
+path = "examplesCode/sw.asm"
 # variables para el codigo assembler 
 codeMachine_file = open ("codeMachine.mem", "a")
 c_asm = []
@@ -50,7 +50,7 @@ for pto_asm in range(len(code_assembler)):
 					type_r.setTypeR(mips[pto_mips], register_file, code_assembler[pto_asm])
 					c_asm = type_r.convert ()
 				# opcion tim
-				elif mips [pto_mips][1] == "tim" or mips [pto_mips][1] == "tio":
+				elif mips [pto_mips][1] == "tim" or mips [pto_mips][1] == "tio" or mips [pto_mips][1] == "tib":
 					type_i.setTypeI(mips[pto_mips], register_file, code_assembler[pto_asm])
 					c_asm = type_i.convert ()
 				elif mips [pto_mips][1] == "tj":

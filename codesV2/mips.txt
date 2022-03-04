@@ -19,15 +19,15 @@ ori 	tim	001101 	rt	rs	inm
 lui 	tim	010000	00000	rt	inm
 beq 	tio	000100	rs	rt	off
 bne 	tio	000101	rs	rt	off
-lb 		tio	100000	rt	off	base
-lbu 	tio	100100	rt	off	base
-lh 		tio	100001	rt	off	base
-lhu 	tio	100101	rt	off	base
-lw 		tio	100011	rt	off	base
-lwu 	tio	010011	rt	off	base
-sb 		tio	101000	rt	off	base
-sh 		tio	101001	rt	off	base
-sw 		tio	101011	rt	off	base
+lb 		tib	100000	rt	base off
+lbu 	tib	100100	rt	base off
+lh 		tib	100001	rt	base off
+lhu 	tib	100101	rt	base off
+lw 		tib	100011	rt	base off
+lwu 	tib	010011	rt	base off
+sb 		tib	101000	rt	base off
+sh 		tib	101001	rt	base off
+sw 		tib	101011	rt	base off
 jal 	tj	000011	ind
 j 		tj	110001	ind
 jr 		tr	000000 rs 00000 00000 00000 001000

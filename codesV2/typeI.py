@@ -1,5 +1,5 @@
 from functions import literalToBinary, getRegFile_binary
-
+import re
 # formato de código máquina y cantidad de bits correspondientes
 # tim
 # | opcode | rs | rt | inmediato |
@@ -17,6 +17,7 @@ class TypeI:
 		self.code_assemb = []
 		self.reg_file 	 = []
 		self.code_machine = []
+		self.tipo 		= []
 		# variables de formato
 		self.opcode		= []
 		self.rs			= []
@@ -26,14 +27,51 @@ class TypeI:
 	# Seteamos la variables de estado
 	def setTypeI (self, mips, reg_f, c_asm ):
 		self.clearAll()
-		self.setISet (mips [2 : len(mips)])
-		self.setCodeAssembler (c_asm[1 : len(c_asm)])
-		self.setRegFile (reg_f)
-
+		self.tipo 		 = mips[1:2]
+		self.iset 		 = mips [2 : len(mips)].copy()
+		self.code_assemb = c_asm[1 : len(c_asm)].copy ()
+		self.reg_file 	 = reg_f.copy()
 
 	# realizamod la conversion de codigo assembler
 	# a código maquina
 	def convert (self):
+		if "tib" in self.tipo:
+			return self.convertTib ()
+		elif "tio" in self.tipo or "tim" in tipo:
+			return self.convertTiom ()
+
+	def convertTib (self):
+		string = str(self.code_assemb[1:2])
+		string = re.sub (r"\[|\'|\]|\)", "", string)
+		string = re.split(r"\(", string)
+
+		j = 0
+		count = 1
+		for pto in self.iset:
+			if pto == "rt":
+				self.rt = [getRegFile_binary (self.code_assemb [j], self.reg_file)]
+				j += 1
+			elif pto == "off":
+				self.inof = [getRegFile_binary (string[1], self.reg_file)]
+				j += 1
+			elif pto == "base":
+				self.rs = [literalToBinary (int(str(string[0])), 16)]
+			else:
+				if count == 1:
+					self.opcode.append (pto)
+				if count == 2:
+					self.rs.append (pto)
+			count = count + 1
+
+		self.setCodeMachine ("".join(self.opcode))
+		self.setCodeMachine ("".join(self.rs))
+		self.setCodeMachine ("".join(self.rt))
+		self.setCodeMachine ("".join(self.inof))
+
+		return self.getCodeMachine ()
+
+	# convertimos los tipo inmediato y offset
+	def convertTiom (self):
 		j = 0
 		count = 1
 		for pto in self.iset:
@@ -45,7 +83,6 @@ class TypeI:
 				j += 1
 			elif pto == "inm" or pto == "off":
 				self.inof = [literalToBinary (int(str(self.code_assemb [j])), 16)]
-				
 			else:
 				if count == 1:
 					self.opcode.append (pto)
@@ -77,20 +114,11 @@ class TypeI:
 		if len(self.inof) != 0:
 			self.inof.clear ()
 
-	def setISet (self, arg):
-		self.iset = arg.copy()
-
 	def getISet (self):
 		return self.iset
-	
-	def setRegFile (self, arg):
-		self.reg_file = arg.copy()
 		
 	def getRegFile (self):
 		return self.reg_file
-
-	def setCodeAssembler (self, arg):
-		self.code_assemb = arg.copy ()
 		
 	def getCodeAssembler (self):
 		return self.code_assemb
