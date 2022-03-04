@@ -28,7 +28,8 @@ lwu 	tio	010011	rt	off	base
 sb 		tio	101000	rt	off	base
 sh 		tio	101001	rt	off	base
 sw 		tio	101011	rt	off	base
-jal 	tji	000011	ind
-j 		tji	110001	ind
-jr 		tj 	rs 00000 00000 00000 001000
-jalr 	tj 	rs 00000 00000 00000 001001		
+jal 	tj	000011	ind
+j 		tj	110001	ind
+jr 		tr	000000 rs 00000 00000 00000 001000
+jalr 	tr	000000 rs 00000 00000 00000 001001
+jalr 	tr	000000 rd rs    00000 00000 001001			
