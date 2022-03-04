@@ -1,10 +1,14 @@
 from typeR import TypeR
 from typeI import TypeI
+from typeJ import TypeJ
 from functions import buildMatrix, deleteChar
 
 # determina si el jalr a utilizar corresponde al
 # jarl del código assembler
 def jalr (c_a, m):
+	if "jalr" not in m:
+		return 1
+
 	cant_reg = len(c_a) - 1
 	if (cant_reg == 1 and "rd" not in m):
 	 	return 1
@@ -14,7 +18,7 @@ def jalr (c_a, m):
 	return 0
 
 # path
-path = "examplesCode/jalr.asm"
+path = "examplesCode/j.asm"
 # variables para el codigo assembler 
 codeMachine_file = open ("codeMachine.mem", "a")
 c_asm = []
@@ -22,6 +26,7 @@ c_asm = []
 # objetos de tipos de intrucciones
 type_r = TypeR ()
 type_i = TypeI ()
+type_j = TypeJ ()
 
 # construimos las matrices de los archivos
 # con privilegio de lectura
@@ -48,6 +53,9 @@ for pto_asm in range(len(code_assembler)):
 				elif mips [pto_mips][1] == "tim" or mips [pto_mips][1] == "tio":
 					type_i.setTypeI(mips[pto_mips], register_file, code_assembler[pto_asm])
 					c_asm = type_i.convert ()
+				elif mips [pto_mips][1] == "tj":
+					type_j.setTypeJ(mips[pto_mips], register_file, code_assembler[pto_asm])
+					c_asm = type_j.convert ()
 
 				codeMachine_file.write ("".join(c_asm) + "\n")
 				c_asm.clear()
