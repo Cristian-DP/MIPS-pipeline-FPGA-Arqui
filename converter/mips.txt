@@ -1,0 +1,35 @@
+add 	tr  000000 rd rs rt 00000 000000
+addu 	tr 	000000 rd rs rt 00000 100001
+and		tr	000000 rd rs rt 00000 100100
+nor 	tr	000000 rd rs rt 00000 100111
+or 		tr	000000 rd rs rt 00000 100101
+sll 	tr	000000 00000 rd rt sa 000000
+sllv 	tr	000000 rd rt rs 00000 000100
+slt		tr	000000 rd rs rt 00000 101010
+sra		tr	000000 00000 rd rt sa 000011
+srav 	tr	000000 rd rt rs 00000 000111
+srl		tr	000000 00000 rd rt sa 000010
+srlv 	tr	000000 rd rs rt 00000 000110
+subu 	tr	000000 rd rt rs 00000 100011
+addi 	tim	001000	rt	rs	inm	
+andi 	tim	001100	rt	rs	inm
+slti 	tim	001010 	rt	rs	inm
+xori 	tim	001110 	rt	rs	inm
+ori 	tim	001101 	rt	rs	inm
+lui 	tim	010000	00000	rt	inm
+beq 	tio	000100	rs	rt	off
+bne 	tio	000101	rs	rt	off
+lb 		tib	100000	rt	base off
+lbu 	tib	100100	rt	base off
+lh 		tib	100001	rt	base off
+lhu 	tib	100101	rt	base off
+lw 		tib	100011	rt	base off
+lwu 	tib	010011	rt	base off
+sb 		tib	101000	rt	base off
+sh 		tib	101001	rt	base off
+sw 		tib	101011	rt	base off
+jal 	tj	000011	ind
+j 		tj	110001	ind
+jr 		tr	000000 rs 00000 00000 00000 001000
+jalr 	tr	000000 rs 00000 00000 00000 001001
+jalr 	tr	000000 rd rs    00000 00000 001001			
