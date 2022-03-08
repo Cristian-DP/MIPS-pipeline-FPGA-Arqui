@@ -6,4 +6,4 @@
 - Para cambiar el archivo .asm a leer, dirigirse al archivo fuente convert.py y modificar la variable path.
 
 ### Daigrama de secuencia
-![This is an image](/home/cristian/Downloads/'diagrama secuencia - Converter.jpeg')
+![diagrama secuencia - Converter](https://user-images.githubusercontent.com/63521101/157157512-bc882480-2fce-480b-95ba-f969b7247def.jpeg)
