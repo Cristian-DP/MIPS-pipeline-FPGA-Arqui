@@ -4,3 +4,6 @@
 - Ejecutar: python3 convert.py
 - Por defecto usa el archivo suma.asm ubicado en la carpeta examplesCode
 - Para cambiar el archivo .asm a leer, dirigirse al archivo fuente convert.py y modificar la variable path.
+
+### Daigrama de secuencia
+![This is an image](/home/cristian/Downloads/'diagrama secuencia - Converter.jpeg')
